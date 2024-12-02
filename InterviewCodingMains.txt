@@ -1,0 +1,87 @@
+Q.1 Find duplicates in an Array?
+Ans:
+    public class FindDupUsingSet {
+
+	public static void main(String[] args) {
+		
+		int[] arr = {1,2,3,4,5,1,2};        //create array
+		
+		Set<Integer> unique = new TreeSet<>();      //empty array{ }  to add unique
+		Set<Integer> duplicate = new TreeSet<>();   //empty array{ }  to add duplicate
+		
+		for(int num : arr) {    //loop on array which is arr each elements comes in variable num (u can use i,a,b,c any)
+			 
+			if(!unique.contains(num)) { //condition if unique set!doesnt contains elements then add elements.
+			   unique.add(num);   //{1,2,3,4,5}
+			   
+			}else {  //else otherwise add in duplicate set 
+				duplicate.add(num); //{1,2}
+			}
+		}
+		System.out.println(unique); //{1,2,3,4,5}
+		System.out.println(duplicate); //{1,2}
+	}
+	
+
+}
+
+
+//FindDupinList
+
+
+public class FindDupInList {
+   public static void main(String[] args) {
+  
+   List<Integer> list = Arrays.asList(1,2,4,2,3,4,5); // create list Arrays.asList=its creates a list of fixed list
+	
+	List<Integer> unique = new ArrayList<>(); // empty list to store unique elements  initaily empty
+	List<Integer> duplicate = new ArrayList<>(); // dupliacte list to store duplicate elements initaily empty
+	
+	for(Integer i : list) {      //loop on list (Integer(Type) i(variable which itereate
+	                                      we can use any ex>num,a,b,xetc),type list).
+		if(!unique.contains(i)) { //if unique list doesnt contain elements add in unique
+			unique.add(i);
+		}else {
+			duplicate.add(i);   //else add in dupliacte.
+		}
+	}
+	System.out.println(unique);
+	System.out.println(duplicate);
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------
+
+Q.2Find duplicates using hashMap?
+
+Ans:public class FindDupUsingHashmap {
+
+	public static void main(String[] args) {
+		
+	List<Integer> list = Arrays.asList(1,2,4,2,3,4,5);//step1: create a list Arrays.asList will create a fixed size arraylist
+	
+	
+   HashMap<Integer,Integer> map= new HashMap<>(); // empty hashmap{} we will add elements then check value greater than 1
+	
+   for(Integer i: list)  //loop on list of type integer i is variable to itereate over it :list
+   {
+	   if(map.containsKey(i)) {   //if map containsKey(i) =i here values from list then map.get(1)+1 1 inside is just example 
+		   map.put(i, map.get(i)+1);
+		   
+	   }else {  //other wise add values in map
+		   map.put(i, 1);
+	   }
+   }
+   for(Map.Entry<Integer, Integer> entry:map.entrySet()) { //loop over map Map.Entry<Type(Integer) key:(Integer) value) 
+   //entry is variable which iterate over map and map.entrySet() is a method to go inside map
+	   
+	   if(entry.getValue()>1) { //check if any key value is greater then 1 then give that key 
+		   System.out.print("{"+entry.getKey()+" ,"+entry.getValue()+"}"); //(2,2) (4,2)
+	   }
+   }
+	
+	
+	}
+	
+
+}
+_____________________________________________________________________________________________________________________________
